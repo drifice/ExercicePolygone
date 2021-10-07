@@ -6,6 +6,7 @@ import java.awt.*;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Main {
 
@@ -42,7 +43,7 @@ public class Main {
         } catch ( IOException e) {
             e.getStackTrace();
         }
-
+       
 
 
     }
@@ -65,6 +66,20 @@ public class Main {
     public static Polygone creatCloneModifyPolygone (Polygone poly1) {
         Polygone poly2 = new Polygone(poly1.getCoter().get(0),poly1.getCoter());
         System.out.println("voulais vous suprimer un element ? o : n ");
+        Scanner scanner = new Scanner(System.in);
+        String reponse= scanner.nextLine();
+        if(reponse =="o" && poly2.getSizeCoter()>0){
+            poly2.getCoter().remove(0);
+        } else {
+            System.out.println("liste de point vide");
+        }
+        System.out.println("voulais vous ajouter un element ? o : n ");
+        reponse= scanner.nextLine();
+        if(reponse =="o" ){
+            Point point = new Point(1,2);
+            poly2.getCoter().add(point);
+        }
+
         return poly1;
     }
 }
